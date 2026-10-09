@@ -1,0 +1,67 @@
+<!doctype html><html dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&display=block" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;font-family:Cairo;background:#f6f1e7}
+#bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,#fffdf7,#efe6d2 70%,#e3d6b8)}
+.leaf{position:absolute;width:90px;height:45px;background:#7fb04a;border-radius:0 100% 0 100%;opacity:.55}
+.s{position:absolute;inset:0;opacity:0}
+#logo{position:absolute;left:140px;width:800px;border-radius:40px;box-shadow:0 20px 60px #0002}
+.photo{position:absolute;border:12px solid #fff;border-radius:28px;box-shadow:0 20px 50px #0003;object-fit:cover}
+.tag{position:absolute;padding:10px 40px;border-radius:40px;color:#fff;font-weight:900;font-size:56px}
+.cap{position:absolute;left:60px;right:60px;bottom:230px;text-align:center}
+.cap div{display:inline-block;background:#fff;color:#3d6b22;font-weight:900;font-size:68px;line-height:1.35;padding:14px 36px;border-radius:24px;margin:8px;box-shadow:0 10px 30px #0002}
+.cap div.g{background:#4f8a2b;color:#fff}
+.mini{position:absolute;top:60px;left:390px;width:300px;border-radius:20px}
+.quote{position:absolute;top:330px;left:80px;right:80px;text-align:center;font-size:400px;color:#c9a55c;opacity:.35;font-weight:900;line-height:1}
+.stars{position:absolute;top:220px;width:100%;text-align:center;font-size:90px;color:#d6a93a;letter-spacing:12px}
+.h{position:absolute;width:100%;text-align:center;font-weight:900}
+</style></head><body>
+<div id="bg"></div><div id="leaves"></div>
+<!-- 0 intro -->
+<div class="s" id="s0"><img id="logo" src="logo.jpg"><div class="h" id="t0" style="top:1350px;font-size:84px;color:#3d6b22">قوة الطبيعة لشعر بنتك</div></div>
+<!-- 1 before/after + c1 -->
+<div class="s" id="s1"><img class="mini" src="logo.jpg">
+ <img class="photo" id="pb" src="before.jpg" style="top:420px;left:70px;width:450px;height:640px">
+ <img class="photo" id="pa" src="after1.jpg" style="top:420px;left:560px;width:450px;height:640px">
+ <div class="tag" id="tb" style="top:380px;left:200px;background:#c98a8a">قبل</div>
+ <div class="tag" id="ta" style="top:380px;left:700px;background:#4f8a2b">بعد</div>
+ <div class="cap" id="cap1"></div></div>
+<!-- 2 c2 -->
+<div class="s" id="s2"><img class="mini" src="logo.jpg"><div class="stars">★★★★★</div>
+ <img class="photo" id="p2" src="after2.jpg" style="top:360px;left:240px;width:600px;height:800px">
+ <div class="cap" id="cap2"></div></div>
+<!-- 3 c3 -->
+<div class="s" id="s3"><img class="mini" src="logo.jpg"><div class="quote">"</div>
+ <div class="h" style="top:560px;font-size:90px;color:#3d6b22">أول يوم مدرسة</div>
+ <div class="h" id="t3" style="top:720px;font-size:70px;color:#b0873a">من الصبح لآخر اليوم ✨</div>
+ <div class="cap" id="cap3"></div></div>
+<!-- 4 outro -->
+<div class="s" id="s4"><img id="logo4" src="logo.jpg" style="position:absolute;left:190px;top:330px;width:700px;border-radius:40px">
+ <div class="h" style="top:1120px;font-size:96px;color:#3d6b22">شعر ناعم ومرطّب</div>
+ <div class="h" style="top:1250px;font-size:72px;color:#b0873a">من أول استخدام</div>
+ <div class="tag" id="cta" style="top:1460px;left:240px;width:600px;text-align:center;background:#4f8a2b;font-size:64px">اطلبي دلوقتي 🌿</div></div>
+<script>
+const L=document.getElementById('leaves');const lv=[];
+for(let i=0;i<14;i++){const d=document.createElement('div');d.className='leaf';L.appendChild(d);lv.push([Math.random()*1080,Math.random()*1920,20+Math.random()*40,Math.random()*360,Math.random()*2])}
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),e=x=>1-Math.pow(1-cl(x),3);
+const S=[['s0',0,2.5],['s1',2.5,14.5],['s2',14.5,22.7],['s3',22.7,28.9],['s4',28.9,40]];
+const caps={cap1:[[2.5,'أول مرة في حياتي','أجرّب شامبو وبلسم'],[8,'ويطلعوا بالتحفة','والحلاوة دي!']],
+ cap2:[[14.5,'بحط الكريم على الشعر','ويفضل رطب طول اليوم'],[18.8,'لحد تالت يوم','ما شاء الله!']],
+ cap3:[[22.7,'رجعت زي ما وديتها الصبح','ولا شعرة هايشة']]};
+function cap(id,t){const a=caps[id];let c=null;for(const x of a)if(t>=x[0])c=x;const el=document.getElementById(id);
+ if(!c){el.innerHTML='';return}const p=e((t-c[0])/.35);el.innerHTML=`<div style="transform:scale(${.7+.3*p});opacity:${p}">${c[1]}</div><br><div class="g" style="transform:translateY(${(1-e((t-c[0]-.3)/.35))*60}px);opacity:${e((t-c[0]-.3)/.35)}">${c[2]}</div>`}
+window.render=t=>{
+ lv.forEach((l,i)=>{const d=L.children[i];d.style.transform=`translate(${l[0]+Math.sin(t*.8+l[4]*3)*40}px,${(l[1]+t*l[2])%2000-60}px) rotate(${l[3]+t*30}deg)`});
+ for(const[id,a,b]of S){const o=Math.min(e((t-a)/.4),1-e((t-b+.3)/.3));document.getElementById(id).style.opacity=t<a||t>b?0:o}
+ const lg=document.getElementById('logo');const p=e(t/1);lg.style.top=(260+(1-p)*80)+'px';lg.style.transform=`scale(${.8+.2*p})`;lg.style.opacity=p;
+ document.getElementById('t0').style.opacity=e((t-1)/.5);
+ const pb=document.getElementById('pb'),pa=document.getElementById('pa');const q=t-2.5;
+ pb.style.transform=`translateX(${(1-e(q/.6))*-600}px) rotate(-4deg)`;pa.style.transform=`translateX(${(1-e((q-.9)/.6))*600}px) rotate(4deg)`;pa.style.opacity=e((q-.9)/.6);
+ document.getElementById('tb').style.transform=`scale(${e((q-.4)/.3)})`;document.getElementById('ta').style.transform=`scale(${e((q-1.3)/.3)})`;
+ document.getElementById('p2').style.transform=`scale(${1.08-.08*e((t-14.5)/4)})`;
+ document.getElementById('t3').style.opacity=e((t-23.5)/.5);
+ document.getElementById('logo4').style.transform=`scale(${.85+.15*e((t-28.9)/.7)})`;
+ document.getElementById('cta').style.transform=`scale(${1+.06*Math.sin(t*6)*cl(t-29.8)})`;
+ cap('cap1',t);cap('cap2',t);cap('cap3',t)};
+</script></body></html>
