@@ -1,5 +1,7 @@
 # Ad Account 25412644 — Campaign Setup & Ad Copy (English)
 
+Creatives: https://claude.ai/artifact/CErdyVJULKYaZn3PEYgHZV
+
 ## 1. OVO – Sales 1 / OVO – Sales 2
 
 **Settings checklist (both campaigns)**
@@ -11,23 +13,21 @@
 - [ ] Budget → EGP 1,000 / day per campaign
 
 **Primary text – Sales 1 (Hype / Drops)**
-> Your next favorite pair is already waiting. 👟
-> OVO brings you the sneakers everyone's talking about — authentic, fresh, and ready to turn heads.
-> Don't just follow the trend. Wear it first.
-> Shop the full collection now at ovokicks.shop
+> Some pairs don't wait for the trend. They start it.
+> Authentic sneakers, hand-picked drops, and the pairs everyone will be asking about next week.
+> Get yours before they're gone.
 
-- Headline: Step Into Something Iconic
-- Description: Authentic sneakers. Fresh drops.
+- Headline: Wear It First
+- Description: 100% authentic. Fresh drops weekly.
 - CTA: Shop Now
 
 **Primary text – Sales 2 (Style / Confidence)**
-> Great outfits start from the ground up. ✨
-> From everyday classics to statement kicks, OVO has the pair that completes your look.
-> Built for comfort. Designed to stand out.
-> Find your pair at ovokicks.shop
+> Every great outfit starts from the ground up.
+> Clean classics for every day, statement pairs for every entrance. Find the one that finishes your fit.
+> Shop the full collection at OVO.
 
-- Headline: Find Your Perfect Pair
-- Description: Classics, statements & everything in between.
+- Headline: The Pair That Finishes the Fit
+- Description: Classics and statement sneakers in one place.
 - CTA: Shop Now
 
 ---
@@ -40,13 +40,12 @@
 - [ ] Page / Pixel stay ema (1091123866896006)
 
 **Primary text**
-> Run like you're floating. ☁️
-> Swiss-engineered CloudTec® cushioning that turns every step into effortless momentum — from morning runs to all-day city miles.
-> Lightweight. Responsive. Unmistakably On.
-> Discover the On Cloud collection at ema.
+> Light enough to forget. Cushioned enough to keep going.
+> Swiss-engineered On Cloud shoes for early runs, long days and everything between.
+> Find your pair in the On collection at ema.
 
-- Headline: Feel the Cloud Under Every Step
-- Description: The On collection, now at ema.
+- Headline: Every Step, On a Cloud
+- Description: Swiss-engineered comfort, now at ema.
 - CTA: Shop Now
 
 ---
@@ -59,12 +58,12 @@
 - [ ] Page / Pixel stay ema
 
 **Primary text**
-> Quiet luxury, perfectly crafted. 🖤
-> Zegna brings Italian heritage, refined materials and timeless tailoring to every piece — made for men who let quality speak for itself.
-> Elevate your everyday. Explore Zegna at ema.
+> Some details only need to be felt.
+> Italian craftsmanship, refined materials and a silhouette that never shouts. The new Zegna collection is here.
+> Discover it at ema.
 
-- Headline: Italian Craftsmanship. Timeless Style.
-- Description: Discover the new Zegna collection.
+- Headline: Quiet Luxury, Made in Italy
+- Description: The new Zegna collection, at ema.
 - CTA: Shop Now
 
 ---
