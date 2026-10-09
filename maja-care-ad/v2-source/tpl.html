@@ -1,0 +1,82 @@
+<!doctype html><html dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=block" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+body{overflow:hidden;font-family:Cairo;background:#f4eedf;position:relative}
+#bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 25%,#fffdf6,#f1e8d4 60%,#e2d3b0)}
+.leaf{position:absolute;width:70px;height:34px;background:#86b552;border-radius:0 100% 0 100%;opacity:.45}
+.sc{position:absolute;inset:0;opacity:0}
+.abs{position:absolute}
+.logoS{border-radius:22px;box-shadow:0 8px 24px #0002;background:#fff}
+.photo{border:12px solid #fff;border-radius:30px;box-shadow:0 20px 50px #0003;object-fit:cover;overflow:hidden;background:#fff}
+.photo img{width:100%;height:100%;object-fit:cover}
+.cap{left:50px;right:50px;text-align:center}
+.cap span{display:inline-block;background:#4f8a2b;color:#fff;font-weight:900;padding:10px 34px;border-radius:22px;box-shadow:0 12px 30px #3d6b2255;line-height:1.35}
+.card{left:40px;right:40px;background:#fff;border-radius:34px;box-shadow:0 18px 50px #0002;display:flex;align-items:center;gap:22px;padding:22px 28px}
+.av{flex:none;border-radius:50%;background:linear-gradient(135deg,#86b552,#4f8a2b);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+.nm{font-weight:900;color:#2f4f1c;line-height:1.2}
+.vf{color:#b0873a;font-weight:700}
+.wave{flex:1;display:flex;align-items:center;gap:5px;height:90px;direction:ltr}
+.wave i{flex:1;background:#86b552;border-radius:6px;min-height:6px}
+.play{flex:none;border-radius:50%;background:#4f8a2b;display:flex;align-items:center;justify-content:center}
+.play:after{content:"";border-left:26px solid #fff;border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:6px}
+.h{left:0;right:0;text-align:center;font-weight:900}
+.cta{background:#4f8a2b;color:#fff;border-radius:60px;font-weight:900;text-align:center;box-shadow:0 16px 40px #3d6b2266}
+.prod{position:relative;display:flex;flex-direction:column;align-items:center}
+.btl{position:relative;border-radius:30px 30px 22px 22px;box-shadow:inset -14px 0 0 #0001,0 18px 30px #0003;display:flex;align-items:center;justify-content:center}
+.btl .lb{background:#fffdf6;border-radius:14px;padding:10px 6px;width:82%;text-align:center}
+.lb b{display:block;color:#4f8a2b;font-family:cursive;font-size:30px;line-height:1}
+.lb small{display:block;color:#b0873a;font-weight:800;font-size:22px}
+.cap1{position:absolute;left:50%;transform:translateX(-50%);border-radius:10px 10px 4px 4px}
+.pn{margin-top:14px;font-weight:900;color:#2f4f1c;font-size:40px}
+</style></head><body>
+<div id="bg"></div><div id="leaves"></div><div id="root"></div>
+<script>
+let D,lv=[],sc=[];
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),e=x=>1-Math.pow(1-cl(x),3),eb=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const NAMES={1:['أ','أم لـ بنوتة شعرها كيرلي'],2:['ن','عميلة MaJa Care'],3:['ع','أم لطالبة في المدرسة']};
+function bottle(kind,s){const c={shampoo:['#cfe3b4',150,330,'شامبو'],cond:['#e9d9b0',140,300,'بلسم'],cream:['#f3e7c8',190,170,'كريم الشعر'],wax:['#b9d38e',170,110,'هير واكس']}[kind];
+ const[col,w,h,n]=c;const cap=kind=='cream'||kind=='wax'?`<div class="cap1" style="top:${-26*s}px;width:${(w+10)*s}px;height:${34*s}px;background:#4f8a2b"></div>`:`<div class="cap1" style="top:${-46*s}px;width:${w*.45*s}px;height:${50*s}px;background:#4f8a2b"></div>`;
+ return `<div class="prod" data-k="${kind}" style="transform-origin:bottom"><div class="btl" style="width:${w*s}px;height:${h*s}px;background:${col};border-radius:${kind=='cream'||kind=='wax'?'26px':'40px 40px 24px 24px'}">${cap}<div class="lb"><b style="font-size:${34*s}px">MaJa</b><small style="font-size:${24*s}px">Care</small></div></div><div class="pn">${n}</div></div>`}
+function init(d){D=d;const{W,H}=d;document.body.style.width=W+'px';document.body.style.height=H+'px';
+ const L=document.getElementById('leaves');for(let i=0;i<16;i++){const x=document.createElement('div');x.className='leaf';L.appendChild(x);lv.push([Math.random()*W,Math.random()*H,15+Math.random()*35,Math.random()*360,Math.random()*6])}
+ const R=document.getElementById('root');const sq=H<1300;const k=sq?.78:1;
+ d.tl.forEach((s,i)=>{const el=document.createElement('div');el.className='sc';el.id='s'+i;let h='';
+  const mini=`<img class="abs logoS" src="logo.jpg" style="top:${sq?26:50}px;left:${W/2-(sq?95:125)}px;width:${sq?190:250}px">`;
+  if(s.type=='intro'){h=`<img class="abs logoS lg" src="logo.jpg" style="left:${W/2-300*k}px;top:${H*.2}px;width:${600*k}px">
+   <div class="abs h ht" style="top:${H*.2+620*k}px;font-size:${66*k}px;color:#2f4f1c;padding:0 40px">${s.text}</div>
+   <div class="abs h hs" style="top:${H*.2+620*k+(sq?110:210)*k}px;font-size:${50*k}px;color:#b0873a">من غير تعديل.. بصوتهم</div>`}
+  if(s.type=='outro'){h=`<img class="abs logoS lg" src="logo.jpg" style="left:${W/2-300*k}px;top:${H*(sq?.06:.14)}px;width:${600*k}px">
+   <div class="abs h" style="top:${H*(sq?.06:.14)+620*k}px;font-size:${86*k}px;color:#2f4f1c">طبيعي.. ومجرّب</div>
+   <div class="abs h" style="top:${H*(sq?.06:.14)+740*k}px;font-size:${54*k}px;color:#b0873a">لشعرك ولشعر بنتك 🌿</div>
+   <div class="abs cta" style="left:${W/2-330*k}px;width:${660*k}px;top:${H*(sq?.06:.14)+870*k}px;font-size:${60*k}px;padding:${18*k}px 0">اطلبي دلوقتي ✉️</div>
+   <div class="abs h" style="top:${H*(sq?.06:.14)+1020*k}px;font-size:${38*k}px;color:#2f4f1c">ابعتيلنا رسالة على صفحة MaJa Care</div>`}
+  if(s.type=='products'){h=mini+`<div class="abs h" style="top:${H*.2}px;font-size:${76*k}px;color:#2f4f1c;padding:0 30px">${s.text}</div>
+   <div class="abs h" style="top:${H*.2+120*k}px;font-size:${46*k}px;color:#b0873a">مكونات طبيعية · ترطيب · ثبات</div>
+   <div class="abs" style="left:0;right:0;top:${H*.42}px;height:${H*.38}px"><div class="prods" style="position:absolute;inset:0">
+   <div style="position:absolute;inset:0;display:flex;justify-content:center;align-items:flex-end;gap:${30*k}px">${['shampoo','cond','cream','wax'].map(p=>bottle(p,.95*k)).join('')}</div></div></div>`}
+  if(s.type=='clip'){const[ini,nm]=NAMES[s.voice];const vh=sq?H*.4:H*.42,vt=sq?H*.17:H*.15,vw=sq?W*.62:W*.78;
+   let vis=s.vis.startsWith('P:')?(()=>{const a=s.vis=='P:all'?['shampoo','cream','wax']:[s.vis.slice(2)];const sc_=vh*(a.length>1?.55:.72)/330;return `<div class="abs vis" style="left:0;right:0;top:${vt}px;height:${vh}px;display:flex;justify-content:center;align-items:flex-end;gap:${50*k}px">${a.map(p=>bottle(p,sc_)).join('')}</div>`})():`<div class="abs photo vis" style="left:${(W-vw)/2}px;top:${vt}px;width:${vw}px;height:${vh}px"><img src="${s.vis}"></div>`;
+   h=mini+vis+`<div class="abs cap" style="top:${vt+vh+(sq?24:50)}px;font-size:${60*k}px"></div>
+   <div class="abs card" style="bottom:${sq?26:110}px"><div class="av" style="width:${110*k}px;height:${110*k}px;font-size:${54*k}px">${ini}</div>
+   <div style="flex:none;max-width:${sq?330:380}px"><div class="nm" style="font-size:${36*k}px">${nm}</div><div class="vf" style="font-size:${28*k}px">★★★★★ · فويس حقيقي ✔</div></div>
+   <div class="wave">${'<i></i>'.repeat(sq?18:22)}</div><div class="play" style="width:${80*k}px;height:${80*k}px"></div></div>`}
+  el.innerHTML=h;R.appendChild(el);sc.push(el)})}
+function render(t){const{W,H,tl,amp}=D;
+ lv.forEach((l,i)=>{document.getElementById('leaves').children[i].style.transform=`translate(${l[0]+Math.sin(t*.7+l[4])*40}px,${(l[1]+t*l[2])%(H+80)-60}px) rotate(${l[3]+t*25}deg)`});
+ tl.forEach((s,i)=>{const el=sc[i];const lt=t-s.t0,d=s.t1-s.t0;const on=t>=s.t0-.2&&t<=s.t1+.35;
+  el.style.opacity=on?Math.min(e((lt+.2)/.4),1-e((lt-d)/.35)):0;if(!on)return;
+  const q=el.querySelector.bind(el);
+  if(s.type=='intro'||s.type=='outro'){const lg=q('.lg');lg.style.transform=`scale(${.8+.2*eb(lt/.8)}) translateY(${Math.sin(t*2)*6}px)`;
+   el.querySelectorAll('.h,.cta').forEach((x,j)=>{const p=e((lt-.4-j*.25)/.5);x.style.opacity=p;x.style.transform=`translateY(${(1-p)*40}px)`+(x.classList.contains('cta')?` scale(${1+.05*Math.sin(t*6)*cl(lt-1.6)})`:'')})}
+  if(s.type=='products'){el.querySelectorAll('.prod').forEach((x,j)=>{const p=eb((lt-.3-j*.3)/.6);x.style.transform=`translateY(${(1-p)*500}px) rotate(${Math.sin(t*2+j)*2}deg)`;x.style.opacity=cl((lt-.3-j*.3)/.2)})}
+  if(s.type=='clip'){const v=q('.vis');const p=e(lt/.5);
+   v.style.transform=v.classList.contains('photo')?`scale(${(.85+.15*p)*(1+.04*lt/d)}) rotate(${(1-p)*-3}deg)`:'';
+   v.querySelectorAll('.prod').forEach((x,j)=>{const pp=eb((lt-j*.2)/.6);x.style.transform=`translateY(${(1-pp)*400}px) rotate(${Math.sin(t*2+j)*2}deg)`});
+   let c=s.caps[0];for(const x of s.caps)if(lt>=x[0])c=x;const cp=q('.cap');const cl_=Math.max(0,lt-c[0]);const pc=eb(cl_/.4);
+   if(cp.dataset.c!=c[1]){cp.innerHTML=`<span>${c[1]}</span>`;cp.dataset.c=c[1]}cp.firstChild.style.transform=`scale(${.6+.4*pc})`;cp.firstChild.style.opacity=cl(cl_/.2);
+   const card=q('.card');const pk=e((lt-.1)/.5);card.style.transform=`translateY(${(1-pk)*250}px)`;
+   const bars=card.querySelectorAll('.wave i');const fi=Math.floor(t*30);const prog=lt/d;
+   bars.forEach((b,j)=>{const a=amp[Math.max(0,fi-(bars.length-j)*1)]||0;b.style.height=(8+a*80*(0.6+0.4*Math.abs(Math.sin(j*1.7))))+'px';b.style.background=(j/bars.length)<prog?'#4f8a2b':'#cfe0b8'})}
+ })}
+</script></body></html>
